@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+    <head>
+        <title>Virtual Book</title>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <link rel='shortcut icon' href='favicon.ico'>
+        <link rel='stylesheet' href='css/NuNormalise.css'>
+        <link rel='stylesheet' href='css/style.css'>
+    </head>
+    <body>
+        <div id='loading-box'>
+            <div class='loading-box__contents'>
+                <h1 class='loading-box__text'>INFORMATION LOADING</h1>
+                <!--Potentially Add Logo In Future-->
+            </div>
+        </div>
+        <header class='header'>
+            <div class='header__container'>
+                <img class='header__image' src='images/logo1.svg' alt='Company Logo: Image of Train'>
+            </div>
+            <div class='header__container'>
+                <h1 class='header__text'>Station Info</h1>
+            </div>
+            <div class='header__container'>
+                <img class='header__image' src='images/logo2.svg' alt='Company Logo: Image of Bus'>
+            </div>
+        </header>
+        <main class='information-box'>
+            <ul class='information-box__list'></ul>
+        </main>
+        <footer class='footer'>
+            <div class='footer-container'>
+                <h2 class='footer__text'>Copyright 2023 Standard PVC</h2>
+            </div>
+        </footer>
+        <strong>
+            <script src='js/promise-polyfill.js'></script>
+            <script src='js/fetch-polyfill.js'></script>
+            <script src='js/script.js'></script>
+        </strong>
+    </body>
+</html>

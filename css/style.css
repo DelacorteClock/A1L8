@@ -1,0 +1,222 @@
+/*****FONTS*****/
+@font-face {
+    font-family: MF;
+    font-weight: normal;
+    src: url('../fonts/MFR.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: MF;
+    font-weight: bold;
+    src: url('../fonts/MFB.ttf') format('truetype');
+}
+
+/*****VARIABLES*****/
+
+:root {
+    /**COLOUR**/
+    --keygreen: #00985F;
+    --altbackground: #FFF;
+    --warningyellow: #FCCC0A;
+    --warningtext: #000;
+    /*Old Key Green --keygreen: #007934;*/
+    /**TEXT**/
+    --defaultsize: 13px;
+    --defaultsizecomp: 11.5px;
+    --bighead: 40px;
+    --bigheadcomp: 35px;
+    --bigheadcomp2: 27.5px;
+    --buttonsize: 17.5px;
+    --buttonsizecomp: 15.5px;
+    --buttonfocussize: 18.5px;
+    --buttonfocussizecomp: 16.5px;
+    /**ELEMENT SIZES**/
+    --buttonheight: 30px;
+    --buttonheightcomp: 25px;
+    --buttonfocusheight: 32px;
+    --buttonfocusheightcomp: 27px;
+}
+
+/*****DEFAULT STYLES*****/
+
+body {
+    font-family: MF, sans-serif;
+    word-wrap: break-word;
+    color: white;
+    background-color: var(--keygreen);
+    font-size: var(--defaultsize);
+    max-width: 80vw;
+    margin: 50px auto;
+    line-height: 100%;
+    text-align: center;
+}
+
+/*****CLASSES*****/
+
+.warning {
+    font-weight: bold;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    transition: ease-in-out all 0.15s;
+}
+
+.header__container {
+    background-color: var(--altbackground);
+    position: relative;
+}
+
+.header__image {
+    max-width: 75%;
+    max-height: 95%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header__text, .loading-box__text {
+    font-weight: bold;
+    font-size: var(--bighead);
+    color: var(--keygreen);
+    line-height: 100%;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: ease-in-out all 0.15s;
+}
+
+.information-box {
+
+}
+
+.information-box__list {
+    padding-left: 0px;
+    list-style-type: none;
+}
+
+.information-box__button {
+    font-family: MF;
+    height: var(--buttonheight);
+    width: auto;
+    font-size: var(--buttonsize);
+    background-color: white;
+    color: var(--keygreen);
+    border-color: transparent;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: ease-in-out all 0.15s;
+}
+
+.information-box__button:hover, .information-box__button:focus {
+    cursor: pointer;
+    /*Make Button + Text Bigger*/
+    font-size: var(--buttonfocussize);
+    border-radius: 6px;
+    height: var(--buttonfocusheight);
+    width: auto;
+}
+
+.information-box__button:active {
+    cursor: pointer;
+    /*Make Button + Text Bigger*/
+    font-size: var(--buttonfocussize);
+    font-weight: bold;
+    border-radius: 6px;
+    height: var(--buttonfocusheight);
+    width: auto;
+}
+
+.footer__text {
+    font-weight: bold;
+    font-size: inherit;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: ease-in-out all 0.15s;
+}
+
+.loading-box__contents {
+    margin: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    background: var(--warningyellow);
+    padding: 15px;
+    width: 100%;
+    max-width: 65vw;
+    border-radius: 20px;
+}
+
+.loading-box__text {
+    color: var(--warningtext);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/*****IDS*****/
+
+#loading-box {
+    display: none;
+}
+
+#loading-box.showing {
+    position: fixed;
+    padding: 30px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 999;
+    overflow: auto;
+    display: grid;
+    text-align: center;
+}
+
+/*****RESPONSIVE CSS*****/
+
+@media all and (max-width: 650px) {
+    body {
+        font-size: var(--defaultsizecomp);
+    }
+
+    .header__text, .loading-box__text {
+        font-size: var(--bigheadcomp);
+    }
+
+    .information-box__button {
+        height: var(--buttonheightcomp);
+        font-size: var(--buttonsizecomp);
+    }
+
+    .information-box__button:hover, .information-box__button:focus, .information-box__button:active {
+        height: var(--buttonfocusheightcomp);
+        font-size: var(--buttonfocussizecomp);
+    }
+}
+
+@media all and (max-width: 450px) {
+    .header {
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+
+    .header__text, .loading-box__text {
+        font-size: var(--bigheadcomp2);
+    }
+}
+
+@media all and (max-width: 320px) {
+    .header {
+        grid-template-columns: 1fr;
+    }
+
+    .header__image {
+        display: none;
+    }
+}
