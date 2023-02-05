@@ -71,7 +71,6 @@ var stationRepository = (function () {
             });
         }).catch(function (e) {
             console.error(e);
-            //Delay loading message to eliminate aesthetically unpleasant 'flashing' 
             setTimeout(hideLoadingMessage, 1500);
         });
     }
@@ -93,11 +92,9 @@ var stationRepository = (function () {
             station.weight = info.weight;
             station.logoUrl = info.logoUrl;
             station.infoUrl = info.infoUrl;
-            //Delay loading message to eliminate aesthetically unpleasant 'flashing' 
             setTimeout(hideLoadingMessage, 1500);
         }).catch(function (e) {
             console.error(e);
-            //Delay loading message to eliminate aesthetically unpleasant 'flashing' 
             setTimeout(hideLoadingMessage, 1500);
         });
     }
