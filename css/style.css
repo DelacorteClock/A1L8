@@ -31,9 +31,13 @@
     --buttonfocussize: 18.5px;
     --buttonfocussizecomp: 16.5px;
     /**ELEMENT SIZES**/
+    --halfbuttonheight: 15px;
     --buttonheight: 30px;
+    --halfbuttonheightcomp: 12.5px;
     --buttonheightcomp: 25px;
+    --halfbuttonfocusheight: 16px;
     --buttonfocusheight: 32px;
+    --halfbuttonfocusheightcomp: 13.5px;
     --buttonfocusheightcomp: 27px;
 }
 
@@ -101,12 +105,14 @@ body {
 .information-box__button {
     font-family: MF;
     height: var(--buttonheight);
+    border-radius: var(--halfbuttonheight);
+    padding-left: var(--halfbuttonheight);
+    padding-right: var(--halfbuttonheight);
     width: auto;
     font-size: var(--buttonsize);
     background-color: white;
     color: var(--keygreen);
     border-color: transparent;
-    border-radius: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
     transition: ease-in-out all 0.15s;
@@ -116,8 +122,10 @@ body {
     cursor: pointer;
     /*Make Button + Text Bigger*/
     font-size: var(--buttonfocussize);
-    border-radius: 6px;
     height: var(--buttonfocusheight);
+    border-radius: var(--halfbuttonfocusheight);
+    padding-left: var(--halfbuttonfocusheight);
+    padding-right:  var(--halfbuttonfocusheight);
     width: auto;
 }
 
@@ -126,8 +134,10 @@ body {
     /*Make Button + Text Bigger*/
     font-size: var(--buttonfocussize);
     font-weight: bold;
-    border-radius: 6px;
     height: var(--buttonfocusheight);
+    border-radius: var(--halfbuttonfocusheight);
+    padding-left: var(--halfbuttonfocusheight);
+    padding-right:  var(--halfbuttonfocusheight);
     width: auto;
 }
 
@@ -192,11 +202,17 @@ body {
 
     .information-box__button {
         height: var(--buttonheightcomp);
+        border-radius: var(--halfbuttonheightcomp);
+        padding-left: var(--halfbuttonheightcomp);
+        padding-right: var(--halfbuttonheightcomp);
         font-size: var(--buttonsizecomp);
     }
 
     .information-box__button:hover, .information-box__button:focus, .information-box__button:active {
         height: var(--buttonfocusheightcomp);
+        border-radius: var(--halfbuttonfocusheightcomp);
+        padding-left: var(--halfbuttonfocusheightcomp);
+        padding-right: var(--halfbuttonfocusheightcomp);
         font-size: var(--buttonfocussizecomp);
     }
 }
