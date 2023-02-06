@@ -49,7 +49,13 @@ var stationRepository = (function () {
         warning = document.querySelector('#loading-box');
         warning.classList.remove('showing');
     }
-
+    
+    //Play tone with loading warning message
+    function playTone() {
+        var t = document.querySelector('#tone');
+        t.play();
+    }
+    
     //Load list of stations in the railway
     function loadList() {
         showLoadingMessage();
@@ -77,6 +83,7 @@ var stationRepository = (function () {
 
     function loadDetails(station) {
         showLoadingMessage();
+        playTone();
         var url = station.lineUrl;
         //Use line details exclusively for V0.5
         return fetch(url).then(function (result) {
