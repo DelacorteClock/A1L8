@@ -19,6 +19,7 @@
     --altbackground: #FFF;
     --warningyellow: #FCCC0A;
     --warningtext: #000;
+    --closerred: #C60C30;
     /*Old Key Green --keygreen: #007934;*/
     /**TEXT**/
     --defaultsize: 13px;
@@ -30,6 +31,9 @@
     --buttonsizecomp: 15.5px;
     --buttonfocussize: 18.5px;
     --buttonfocussizecomp: 16.5px;
+    --paragraphsize: 20px;
+    --paragraphsizecomp: 17px;
+    --paragraphsizeexp: 23px;
     /**ELEMENT SIZES**/
     --halfbuttonheight: 15px;
     --buttonheight: 30px;
@@ -46,10 +50,14 @@
 
 /*****DEFAULT STYLES*****/
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: MF, sans-serif;
     word-wrap: break-word;
-    color: white;
+    color: var(--altbackground);
     background-color: var(--keygreen);
     font-size: var(--defaultsize);
     max-width: 80vw;
@@ -84,7 +92,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.header__text, .loading-box__text {
+.header__text, .loading-box__text, .station-box__head, .station-box__paragraph {
     font-weight: bold;
     font-size: var(--bighead);
     color: var(--keygreen);
@@ -105,7 +113,7 @@ body {
     list-style-type: none;
 }
 
-.information-box__button {
+.information-box__button, .station-box__closer {
     font-family: MF;
     height: var(--buttonheight);
     border-radius: var(--halfbuttonheight);
@@ -113,7 +121,7 @@ body {
     padding-right: var(--halfbuttonheight);
     width: auto;
     font-size: var(--buttonsize);
-    background-color: white;
+    background-color: var(--altbackground);
     color: var(--keygreen);
     border-color: transparent;
     margin-top: 5px;
@@ -121,7 +129,13 @@ body {
     transition: ease-in-out all 0.15s;
 }
 
-.information-box__button:hover, .information-box__button:focus {
+.station-box__closer {
+    font-weight: bold;
+    background-color: var(--closerred);
+    color: var(--altbackground);
+}
+
+.information-box__button:hover, .information-box__button:focus, .station-box__closer:hover, .station-box__closer:focus {
     cursor: pointer;
     /*Make Button + Text Bigger*/
     font-size: var(--buttonfocussize);
@@ -132,7 +146,7 @@ body {
     width: auto;
 }
 
-.information-box__button:active {
+.information-box__button:active, .station-box__closer:active {
     cursor: pointer;
     /*Make Button + Text Bigger*/
     font-size: var(--buttonfocussize);
@@ -154,7 +168,7 @@ body {
     transition: ease-in-out all 0.15s;
 }
 
-.loading-box__contents {
+.loading-box__contents, .station-box__contents {
     margin: auto;
     display: inline-block;
     box-sizing: border-box;
@@ -164,19 +178,30 @@ body {
     border-radius: var(--modalborderradius);
 }
 
-.loading-box__text {
+.station-box__contents {
+    width: var(--modalmaxwidth);
+    background: var(--altbackground);
+}
+
+.loading-box__text, .station-box__head, .station-box__paragraph {
     color: var(--warningtext);
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
+.station-box__paragraph {
+    font-size: var(--paragraphsize);
+    font-weight: normal;
+}
+
 /*****IDS*****/
 
-#loading-box {
+#loading-box, #station-box {
     display: none;
 }
 
-#loading-box.showing {
+/******ADD SHEWING VERY IMPORTANT******/
+#loading-box.showing, #station-box {
     position: fixed;
     padding: 30px;
     box-sizing: border-box;
@@ -185,10 +210,28 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.65);
-    z-index: 100;
     overflow: auto;
     display: grid;
     text-align: center;
+}
+
+#loading-box.showing {
+    z-index: 100;
+}
+
+#station-box.showing {
+    z-index: 200;
+}
+
+#line-img {
+    display: block;
+    width: 25vw;
+    margin: 0 auto;
+}
+
+/*Move To #station-box.showing After Testing*/
+#station-box {
+    z-index: 200;
 }
 
 /*****RESPONSIVE CSS*****/
@@ -198,11 +241,11 @@ body {
         font-size: var(--defaultsizecomp);
     }
 
-    .header__text, .loading-box__text {
+    .header__text, .loading-box__text, .station-box__head {
         font-size: var(--bigheadcomp);
     }
 
-    .information-box__button {
+    .information-box__button, .station-box__closer {
         height: var(--buttonheightcomp);
         border-radius: var(--halfbuttonheightcomp);
         padding-left: var(--halfbuttonheightcomp);
@@ -210,7 +253,7 @@ body {
         font-size: var(--buttonsizecomp);
     }
 
-    .information-box__button:hover, .information-box__button:focus, .information-box__button:active {
+    .information-box__button:hover, .information-box__button:focus, .information-box__button:active, .station-box__closer:hover, .station-box__closer:focus, .station-box__closer:active {
         height: var(--buttonfocusheightcomp);
         border-radius: var(--halfbuttonfocusheightcomp);
         padding-left: var(--halfbuttonfocusheightcomp);
@@ -224,7 +267,7 @@ body {
         grid-template-columns: 1fr 3fr 1fr;
     }
 
-    .header__text, .loading-box__text {
+    .header__text, .loading-box__text, .station-box__head {
         font-size: var(--bigheadcomp2);
     }
 }
@@ -236,5 +279,20 @@ body {
 
     .header__image {
         display: none;
+    }
+
+    .station-box__paragraph {
+        font-size: var(--paragraphsize);
+    }
+}
+
+/*Adapt For Large Windows*/
+@media all and (min-width: 800px) {
+    #line-img {
+        width: 20vw;
+    }
+    
+    .station-box__paragraph {
+        font-size: var(--paragraphsizeexp);
     }
 }

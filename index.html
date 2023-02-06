@@ -12,12 +12,28 @@
         <audio id='tone'>
             <source src='audio/tone.wav' type='audio/wav'>
         </audio>
+        <!--Application Modal Content-->
         <div id='loading-box'>
             <div class='loading-box__contents'>
                 <h1 class='loading-box__text'>INFORMATION LOADING</h1>
                 <!--Potentially Add Logo In Future-->
             </div>
         </div>
+        <!--Use Station Box Styles Based On Loading Box CSS-->
+        <div id='station-box'>
+            <div class='station-box__contents'>
+                <h1 class='station-box__head'>Line <span class='line-letter'>C</span>: <span id='line-colour'>Green</span></h1>
+                <a id='line-imglink' href='https://www.metro.net/riding/schedules/?line=803'><img id='line-img' alt='Line Logo' src='https://www.metro.net/wp-content/themes/lifeboat/assets/img/svg/schedules/icon-line-803.svg'></a>
+                <p class='station-box__paragraph'>The <span class='line-name'>Green</span> (<span class='line-letter'>C</span>) Line of the LACMTA's Metro Rail
+                    system is a <span class='line-weight'>light</span> rail line which runs from <span class='line-terminal1'>TERMINAL A</span> to
+                    <span class='line-terminal2'>TERMINAL B</span>. <br> The station which you selected&mdash;<span class='station-name'>Norwalk</span>&mdash;is station 
+                    <span class='station-id'>27182</span>. For more information about the <span class='line-name'>Green</span> Line please click the line logo above
+                    this paragraph. The site allows you to view and/or download a map and schedule. 
+                </p>
+                <button class='station-box__closer'>CLOSE</button>
+            </div>
+        </div>
+        <!--Application Key Content-->
         <header class='header'>
             <div class='header__container'>
                 <img class='header__image' src='images/logo1.svg' alt='Company Logo: Image of Train'>
