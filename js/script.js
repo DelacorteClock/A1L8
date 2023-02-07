@@ -137,6 +137,7 @@ var modalTools = (function () {
         modalLogo.src = station.logoUrl;
         modalLogo.id = 'line-img';
         modalLink.appendChild(modalLogo);
+        //Create informational paragraph based on json results
         var modalPar = document.createElement('p');
         modalPar.classList.add('station-box__paragraph');
         if (station.letter.length === 1) {
@@ -148,17 +149,23 @@ var modalTools = (function () {
             ` ${station.weight.toLowerCase()} rail lines in the Los Angeles region. To learn more about the ${station.line} lines ` + 
             `please click the line logo above this paragraph to visit a LACMTA page where you can access a map and schedule for either line.`;
         }
+        //Make a close button
         var modalCloser = document.createElement('button');
         modalCloser.id = 'station-box__closer';
         modalCloser.innerText = 'CLOSE';
         modalCloser.addEventListener('click', closeModal);
-        //Add to modal
+        //Add elements to modal
         modal.appendChild(modalHead);
         modal.appendChild(modalLink);
         modal.appendChild(modalPar);
         modal.appendChild(modalCloser);
         modalContainer.appendChild(modal);
         modalContainer.classList.add('showing');
+        modalContainer.addEventListener('click', function (event) {
+            if (event.target === modalContainer) {
+                closeModal();
+            }
+        });
     }
     
     function closeModal() {
@@ -173,7 +180,7 @@ var modalTools = (function () {
         }
     });
 
-    return {openModal: openModal, closeModal: closeModal};
+    return {openModal: openModal};
 })();
 
 //Use getAll to get station information
