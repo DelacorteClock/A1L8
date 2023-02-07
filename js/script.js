@@ -35,6 +35,7 @@ var stationRepository = (function () {
     function showDetails(station) {
         loadDetails(station).then(function () {
             console.log(station);
+            modalTools.openModal(station);
         });
     }
 
@@ -49,13 +50,13 @@ var stationRepository = (function () {
         warning = document.querySelector('#loading-box');
         warning.classList.remove('showing');
     }
-    
+
     //Play tone with loading warning message
     function playTone() {
         var t = document.querySelector('#tone');
         t.play();
     }
-    
+
     //Load list of stations in the railway
     function loadList() {
         showLoadingMessage();
@@ -91,6 +92,7 @@ var stationRepository = (function () {
         }).then(function (info) {
             //Correction for json format
             info = info[0];
+            //Transfer each needed datum
             station.line = info.line;
             station.letter = info.letter;
             station.hex = info.hex;
@@ -99,14 +101,72 @@ var stationRepository = (function () {
             station.weight = info.weight;
             station.logoUrl = info.logoUrl;
             station.infoUrl = info.infoUrl;
-            setTimeout(hideLoadingMessage, 1500);
+            setTimeout(hideLoadingMessage, 500);
         }).catch(function (e) {
             console.error(e);
-            setTimeout(hideLoadingMessage, 1500);
+            setTimeout(hideLoadingMessage, 500);
         });
     }
 
     return {getAll: getAll, add: add, addListItem: addListItem, loadList: loadList, loadDetails: loadDetails};
+})();
+
+//IIFE for modal work
+var modalTools = (function () {
+    //Open modal with content specific to inputted station
+    function openModal(station) {
+        //Select modal container and clear old contents
+        var modalContainer = document.querySelector('#station-box');
+        modalContainer.innerHTML = '';
+        //Create and fill modal
+        var modal = document.createElement('div');
+        modal.classList.add('station-box__contents');
+        //Make head for modal
+        var modalHead = document.createElement('h1');
+        modalHead.classList.add('station-box__head');
+        //Different 'paths' depending on whether there are one or two lines at the station selected
+        if (station.letter.length === 1) {
+            modalHead.innerHTML = `Line ${station.letter}: <span style='color: ${station.hex}'>${station.line}</span>`;
+        } else {
+            modalHead.innerHTML = `Lines ${station.letter}: ${station.line}`;
+        }
+        //Make a logo which is a link
+        var modalLink = document.createElement('a');
+        modalLink.href = station.infoUrl;
+        var modalLogo = document.createElement('img');
+        modalLogo.src = station.logoUrl;
+        modalLogo.id = 'line-img';
+        modalLink.appendChild(modalLogo);
+        var modalPar = document.createElement('p');
+        modalPar.classList.add('station-box__paragraph');
+        if (station.letter.length === 1) {
+            modalPar.innerText = `You selected ${station.name}: ${station.line} Line station ${station.id}. The ${station.line} (${station.letter}) Line of the LACMTA's Metro Rail system is a ` +  
+            ` ${station.weight.toLowerCase()} rail line which runs from ${station.terminal1} to ${station.terminal2}. To learn more about the ${station.line} Line ` + 
+            `please click the line logo above this paragraph to visit a LACMTA page where you can access its map and schedule.`;
+        } else {
+            modalPar.innerText = `You selected ${station.name}: ${station.line} Line station ${station.id}. The ${station.line} (${station.letter}) Lines of the LACMTA's Metro Rail system are ` +  
+            ` ${station.weight.toLowerCase()} rail lines in the Los Angeles region. To learn more about the ${station.line} lines ` + 
+            `please click the line logo above this paragraph to visit a LACMTA page where you can access a map and schedule for either line.`;
+        }
+        var modalCloser = document.createElement('button');
+        modalCloser.id = 'station-box__closer';
+        modalCloser.innerText = 'CLOSE';
+        modalCloser.addEventListener('click', closeModal);
+        //Add to modal
+        modal.appendChild(modalHead);
+        modal.appendChild(modalLink);
+        modal.appendChild(modalPar);
+        modal.appendChild(modalCloser);
+        modalContainer.appendChild(modal);
+        modalContainer.classList.add('showing');
+    }
+    
+    function closeModal() {
+        modalContainer = document.querySelector('#station-box');
+        modalContainer.classList.remove('showing');
+    }
+
+    return {openModal: openModal, closeModal: closeModal};
 })();
 
 //Use getAll to get station information

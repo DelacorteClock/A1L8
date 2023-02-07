@@ -113,7 +113,7 @@ body {
     list-style-type: none;
 }
 
-.information-box__button, .station-box__closer {
+.information-box__button, #station-box__closer {
     font-family: MF;
     height: var(--buttonheight);
     border-radius: var(--halfbuttonheight);
@@ -129,13 +129,13 @@ body {
     transition: ease-in-out all 0.15s;
 }
 
-.station-box__closer {
+#station-box__closer {
     font-weight: bold;
     background-color: var(--closerred);
     color: var(--altbackground);
 }
 
-.information-box__button:hover, .information-box__button:focus, .station-box__closer:hover, .station-box__closer:focus {
+.information-box__button:hover, .information-box__button:focus, #station-box__closer:hover, #station-box__closer:focus {
     cursor: pointer;
     /*Make Button + Text Bigger*/
     font-size: var(--buttonfocussize);
@@ -146,7 +146,7 @@ body {
     width: auto;
 }
 
-.information-box__button:active, .station-box__closer:active {
+.information-box__button:active, #station-box__closer:active {
     cursor: pointer;
     /*Make Button + Text Bigger*/
     font-size: var(--buttonfocussize);
@@ -201,7 +201,7 @@ body {
 }
 
 /******ADD SHEWING VERY IMPORTANT******/
-#loading-box.showing, #station-box {
+#loading-box.showing, #station-box.showing {
     position: fixed;
     padding: 30px;
     box-sizing: border-box;
@@ -209,18 +209,18 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 1);
     overflow: auto;
     display: grid;
     text-align: center;
 }
 
 #loading-box.showing {
-    z-index: 100;
+    z-index: 200;
 }
 
 #station-box.showing {
-    z-index: 200;
+    z-index: 100;
 }
 
 #line-img {
@@ -229,10 +229,10 @@ body {
     margin: 0 auto;
 }
 
-/*Move To #station-box.showing After Testing*/
-#station-box {
+/***********Move To #station-box.showing After Testing***********/
+/*#station-box {
     z-index: 200;
-}
+}*/
 
 /*****RESPONSIVE CSS*****/
 
@@ -245,7 +245,7 @@ body {
         font-size: var(--bigheadcomp);
     }
 
-    .information-box__button, .station-box__closer {
+    .information-box__button, #station-box__closer {
         height: var(--buttonheightcomp);
         border-radius: var(--halfbuttonheightcomp);
         padding-left: var(--halfbuttonheightcomp);
@@ -253,7 +253,7 @@ body {
         font-size: var(--buttonsizecomp);
     }
 
-    .information-box__button:hover, .information-box__button:focus, .information-box__button:active, .station-box__closer:hover, .station-box__closer:focus, .station-box__closer:active {
+    .information-box__button:hover, .information-box__button:focus, .information-box__button:active, #station-box__closer:hover, #station-box__closer:focus, #station-box__closer:active {
         height: var(--buttonfocusheightcomp);
         border-radius: var(--halfbuttonfocusheightcomp);
         padding-left: var(--halfbuttonfocusheightcomp);
