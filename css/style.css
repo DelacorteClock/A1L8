@@ -200,7 +200,6 @@ body {
     display: none;
 }
 
-/******ADD SHEWING VERY IMPORTANT******/
 #loading-box.showing, #station-box.showing {
     position: fixed;
     padding: 30px;
@@ -228,11 +227,6 @@ body {
     width: 25vw;
     margin: 0 auto;
 }
-
-/***********Move To #station-box.showing After Testing***********/
-/*#station-box {
-    z-index: 200;
-}*/
 
 /*****RESPONSIVE CSS*****/
 
