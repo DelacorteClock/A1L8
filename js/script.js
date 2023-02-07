@@ -162,9 +162,16 @@ var modalTools = (function () {
     }
     
     function closeModal() {
-        modalContainer = document.querySelector('#station-box');
+        var modalContainer = document.querySelector('#station-box');
         modalContainer.classList.remove('showing');
     }
+    
+    window.addEventListener('keydown', function (e) {
+        var modalContainer = document.querySelector('#station-box');
+        if (e.key === 'Escape' && modalContainer.classList.contains('showing')) {
+            modalContainer.classList.remove('showing');
+        }
+    });
 
     return {openModal: openModal, closeModal: closeModal};
 })();
