@@ -41,13 +41,13 @@ var stationRepository = (function () {
 
     //Show loading warning message
     function showLoadingMessage() {
-        warning = document.querySelector('#loading-box');
+        var warning = document.querySelector('#loading-box');
         warning.classList.add('showing');
     }
 
     //Hide loading warning message
     function hideLoadingMessage() {
-        warning = document.querySelector('#loading-box');
+        var warning = document.querySelector('#loading-box');
         warning.classList.remove('showing');
     }
 
@@ -171,14 +171,22 @@ var modalTools = (function () {
     function closeModal() {
         var modalContainer = document.querySelector('#station-box');
         modalContainer.classList.remove('showing');
+        playTone();
     }
     
     window.addEventListener('keydown', function (e) {
         var modalContainer = document.querySelector('#station-box');
         if (e.key === 'Escape' && modalContainer.classList.contains('showing')) {
             modalContainer.classList.remove('showing');
+            playTone();
         }
     });
+    
+    //Play tone with loading warning message
+    function playTone() {
+        var t = document.querySelector('#tone');
+        t.play();
+    }
 
     return {openModal: openModal};
 })();
