@@ -16,9 +16,10 @@
 :root {
     /**COLOUR**/
     --keygreen: #00985F;
+    --keybrown: #351c15;
     --altbackground: #FFF;
     --warningyellow: #FCCC0A;
-    --warningtext: #000;
+    --warningtext: #351c15;
     --closerred: #C60C30;
     /*Old Key Green --keygreen: #007934;*/
     /**TEXT**/
@@ -58,7 +59,7 @@ body {
     font-family: MF, sans-serif;
     word-wrap: break-word;
     color: var(--altbackground);
-    background-color: var(--keygreen);
+    background-color: var(--keybrown);
     font-size: var(--defaultsize);
     max-width: 80vw;
     margin: 50px auto;
@@ -95,7 +96,7 @@ body {
 .header__text, .loading-box__text, .station-box__head, .station-box__paragraph {
     font-weight: bold;
     font-size: var(--bighead);
-    color: var(--keygreen);
+    color: var(--keybrown);
     line-height: 100%;
     margin-bottom: 25px;
     margin-top: 25px;
@@ -122,7 +123,7 @@ body {
     width: auto;
     font-size: var(--buttonsize);
     background-color: var(--altbackground);
-    color: var(--keygreen);
+    color: var(--keybrown);
     border-color: transparent;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -221,7 +222,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 1);
+    background: var(--keybrown);
     overflow: auto;
     display: grid;
     text-align: center;
